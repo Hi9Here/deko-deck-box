@@ -1,0 +1,52 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../deko-deck/deko-deck.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
+
+
+<!--
+`deko-deck-box`
+Where deko decks go to be sorted
+
+@demo demo/index.html 
+-->
+
+<dom-module id="deko-deck-box">
+
+    <style>
+
+      deko-deck {
+        height: 800px;
+      }
+      .container {
+        float: left;
+      }
+    </style>
+ 
+  <template>
+    <template is="dom-repeat" items="{{deckItems}}" >
+        <div class="container">
+          <!--When an Element is Clicked is becomes Selected-->
+          <deko-deck on-click="select" name=[[item.name]] color=[[item.color]]></deko-deck>
+        </div>
+    </template>
+    <deko-deck name="Selected Deck" color="purple" selected="true"></deko-deck>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'deko-deck-box',
+      ready: function() {
+        this.deckItems = [
+            { name: "Moe", color: "red", selected: false },
+            { name: "Larry", color: "blue", selected: false },
+            { name: "Curl", color: "orange", selected: false }
+        ];
+      },
+      select: function(e) {
+        var model = e.model;
+      model.set('item.selected', model.item.true);
+      }
+    });
+  </script>
+
+</dom-module>

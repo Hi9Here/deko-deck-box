@@ -1,0 +1,100 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-styles/typography.html">
+
+
+<!--
+`deko-deck`
+Deck Element for Deko
+@demo demo/index.html 
+-->
+
+<dom-module id="deko-deck">
+  <template>
+    <style>
+      :host {
+        display: inline-block;
+        height: 100%;
+        width:3em;
+        color: #fff;
+        font-family: Roboto, Arial, Helvetica, sans-serif;
+      }
+      #deck-box {
+        height: 100%;
+        width: 100%;
+        display: inline-block;
+        padding: 10px 0px 10px 0px;
+        opacity: 0.9;
+      }
+      #deck-box:hover  {
+        opacity: 1;
+      }
+      .title {
+        @apply(--paper-font-title);
+        position: relative;
+        display: inline-block;
+        left: -325px;
+        width: 700px;
+        top: 350px;
+        vertical-align: top;
+        text-align: left;
+      }
+      .rotate {
+        /* Safari */
+        -webkit-transform: rotate(90deg);
+        /* Firefox */
+        -moz-transform: rotate(90deg);
+        /* IE */
+        -ms-transform: rotate(90deg);
+        /* Opera */
+        -o-transform: rotate(90deg);
+        /* Internet Explorer */
+        filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+      }
+      a {
+        text-decoration: none;
+        color: #fff;
+      }
+    </style>
+    <a href="[[link]]">
+      <div id="deck-box" style="background: [[color]];">
+        <div class="title rotate">[[name]]</div>
+      </div>
+    </a>
+  </template>
+
+</dom-module>
+<script>
+  Polymer({
+    is: 'deko-deck',
+    properties: {
+      /**
+      * Name of the Deck
+      */
+      name: {
+        type: String,
+        value: 'Home',
+      },
+      /**
+      * Link to the Deck url
+      */
+      link: {
+        type: String,
+        value: '#',
+      },
+      /**
+      * Background color of the deck
+      */
+      color: {
+        type: String,
+        value: 'Red',
+      },
+      /**
+      * If the deck is selected then the title is as the top. By default, it's at the bottom
+      */
+      selected: {
+        type: Boolean,
+        value: false,
+      }
+    }
+  })
+</script>
