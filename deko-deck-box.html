@@ -11,9 +11,8 @@ Where deko decks go to be sorted
 -->
 
 <dom-module id="deko-deck-box">
-
+  <template>
     <style>
-
       deko-deck {
         height: 800px;
       }
@@ -21,8 +20,6 @@ Where deko decks go to be sorted
         float: left;
       }
     </style>
- 
-  <template>
     <template is="dom-repeat" items="{{deckItems}}" >
         <div class="container">
           <!--When an Element is Clicked is becomes Selected-->
@@ -31,22 +28,20 @@ Where deko decks go to be sorted
     </template>
     <deko-deck name="Selected Deck" color="purple" selected="true"></deko-deck>
   </template>
-
-  <script>
-    Polymer({
-      is: 'deko-deck-box',
-      ready: function() {
-        this.deckItems = [
-            { name: "Moe", color: "red", selected: false },
-            { name: "Larry", color: "blue", selected: false },
-            { name: "Curl", color: "orange", selected: false }
-        ];
-      },
-      select: function(e) {
-        var model = e.model;
-      model.set('item.selected', model.item.true);
-      }
-    });
-  </script>
-
 </dom-module>
+<script>
+  Polymer({
+    is: 'deko-deck-box',
+    ready: function() {
+      this.deckItems = [
+        { name: "Moe", color: "red", selected: false },
+        { name: "Larry", color: "blue", selected: false },
+        { name: "Curl", color: "orange", selected: false }
+      ]
+    },
+    select: function(e) {
+      var model = e.model
+      model.set('item.selected', model.item.true)
+    }
+  })
+</script>
